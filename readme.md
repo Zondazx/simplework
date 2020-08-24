@@ -4,4 +4,5 @@ I did it to practice [Laravel](https://laravel.com), had to do it in [Laravel 4.
 
 It was quite a challenge to do it in a older version of Laravel.
 
-The idea of the project comes from [Laracasts](https://laracasts.com/series/laravel-6-from-scratch/) and their amazing Laravel from scratch.
+The idea of the project comes from [Laracasts](https://laracasts.com) and their amazing course 
+[Laravel From Scratch](series/laravel-6-from-scratch/).
