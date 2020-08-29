@@ -25,7 +25,27 @@ class ArticlesController extends \BaseController {
 	 * @return view to create a new article.
 	*/
 	public function create() {
-		return View::make("articles.create");
+		/*
+		* This is a little test of relationships, I placed it here because I needed
+		* to test it fast.
+		$user = User::find(8);
+		
+		return $user->articles;
+	
+		
+		$article = Article::find(8)->author;
+
+		return $article;
+
+		$article = Article::first();
+
+		return $article->tags;
+		*/
+
+		$tag = Tag::find(1);
+
+		return $tag->articles;
+		// return View::make("articles.create");
 	}
 
 	/*
