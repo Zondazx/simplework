@@ -19,7 +19,7 @@ Route::get("about", function() {
 	return View::make("about", array("articles" => Article::take(3)->latest()->get()));
 });
 
-Route::get("articles", "ArticlesController@index");
+Route::get("articles", array("as" => "articles.index", "uses" => "ArticlesController@index"));
 Route::get("articles/create", "ArticlesController@create");
 Route::post("articles", "ArticlesController@store");
 Route::get("articles/{article}", array("as" => "articles.show", "uses" => "ArticlesController@show"));

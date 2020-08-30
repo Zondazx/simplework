@@ -17,7 +17,13 @@ class ArticlesController extends \BaseController {
 	 * @return view of the list.
 	*/
 	public function index() {
-		return View::make("articles.index", array("articles" => Article::latest()->get()));
+
+		if (Input::get("tag")) {
+			$articles = Tag::where("name", Input::get("tag"))->firstOrFail()->articles;
+		} else {
+			$articles = Article::take(15)->latest()->get();
+		}
+		return View::make("articles.index", array("articles" => $articles));
 	}
 
 	/*
@@ -40,12 +46,13 @@ class ArticlesController extends \BaseController {
 		$article = Article::first();
 
 		return $article->tags;
-		*/
+		
 
 		$tag = Tag::find(1);
 
 		return $tag->articles;
-		// return View::make("articles.create");
+		*/
+		return View::make("articles.create", array("tags" => Tag::all()));
 	}
 
 	/*
@@ -56,20 +63,24 @@ class ArticlesController extends \BaseController {
 	*/
 	public function store() {
 
+		$article = new Article();
+
 		$input = array(
 			"title" => Input::get("title"),
 			"excerpt" => Input::get("excerpt"),
-			"body" => Input::get("body")
+			"body" => Input::get("body"),
+			"user_id" => 1 // this is hardcoded for now, it will be changed with authentication
 		);
-		
+
 		$validator = $this->validate($input);
 
 		if ($validator->fails()) {
 		 	return Redirect::back()->withInput()->withErrors($validator);
 		}
-
-		Article::create($input);
 		
+		$article->fill($input)->save();
+		// Article::create($input)
+
 		return Redirect::to("articles");
 	}
 
