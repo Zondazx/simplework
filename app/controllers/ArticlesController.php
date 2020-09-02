@@ -77,9 +77,9 @@ class ArticlesController extends \BaseController {
 		if ($validator->fails()) {
 		 	return Redirect::back()->withInput()->withErrors($validator);
 		}
-		
+
 		$article->fill($input)->save();
-		// Article::create($input)
+		$article->tags()->attach(Input::get("tags"));		
 
 		return Redirect::to("articles");
 	}
