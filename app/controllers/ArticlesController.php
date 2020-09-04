@@ -63,13 +63,11 @@ class ArticlesController extends \BaseController {
 	*/
 	public function store() {
 
-		$article = new Article();
-
 		$input = array(
 			"title" => Input::get("title"),
 			"excerpt" => Input::get("excerpt"),
 			"body" => Input::get("body"),
-			"user_id" => 1 // this is hardcoded for now, it will be changed with authentication
+			"user_id" => 1, // this is hardcoded for now, it will be changed with authentication
 		);
 
 		$validator = $this->validate($input);
@@ -78,9 +76,10 @@ class ArticlesController extends \BaseController {
 		 	return Redirect::back()->withInput()->withErrors($validator);
 		}
 
-		$article->fill($input)->save();
-		$article->tags()->attach(Input::get("tags"));		
-
+		Article::create($input)
+			->tags()
+			->attach(Input::get("tags"));
+		
 		return Redirect::to("articles");
 	}
 
