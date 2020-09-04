@@ -60,14 +60,14 @@
                 <div class="field">
                     <label for="body" class="label">Tags</label>
 
-                    <div class="control">
+                    <div class="select is-multiple control">
                         <select name="tags[]" multiple>
                             @foreach ($tags as $tag)
                                 <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                             @endforeach
                         </select>
                         @if($errors->has("tags"))
-                            <p class="help is-danger">{{ $errors->first("tag") }}</p>
+                            <p class="help is-danger">{{ $errors->first("tags") }}</p>
                         @endif
                     </div>
                 </div>

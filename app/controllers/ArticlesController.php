@@ -67,10 +67,18 @@ class ArticlesController extends \BaseController {
 			"title" => Input::get("title"),
 			"excerpt" => Input::get("excerpt"),
 			"body" => Input::get("body"),
+			"tags" => Input::get("tags"),
 			"user_id" => 1, // this is hardcoded for now, it will be changed with authentication
 		);
 
-		$validator = $this->validate($input);
+		$rules = array(
+			"title" => "required|min:4",
+			"excerpt" => "required|min:8",
+			"body" => "required|min:12",
+			"tags" => "exists:tags,id"
+		);
+
+		$validator = Validator::make($input, $rules);
 
 		if ($validator->fails()) {
 		 	return Redirect::back()->withInput()->withErrors($validator);
