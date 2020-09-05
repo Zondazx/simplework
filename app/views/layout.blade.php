@@ -11,7 +11,7 @@
 <link href="/css/default.css" rel="stylesheet" type="text/css" media="all" />
 <link href="/public/fonts.css" rel="stylesheet" type="text/css" media="all" />
 
-@yield("create-article-style")
+@yield("bulma-style")
 </head>
 <body>
 	<div id="header-wrapper">
@@ -26,15 +26,15 @@
 					<li class="{{ Request::is("about") ? "current_page_item" : "" }}"><a href="/about" accesskey="3" title="">About Us</a></li>
 					<li class="{{ Request::is("articles") ? "current_page_item" : "" }}"><a href="/articles" accesskey="4" title="">Articles</a></li>
 					<li class="{{ Request::is("contacts") ? "current_page_item" : "" }}"><a href="#" accesskey="5" title="">Contact Us</a></li>
+					<li style="margin-left: 120px;" class="{{ Request::is("login") ? "current_page_item" : "" }}"><a href="/login" accesskey="6" title="">Login</a></li>
+					<li class="{{ Request::is("register") ? "current_page_item" : "" }}"><a href="/register" accesskey="6" title="">Register</a></li>
 				</ul>
 			</div>
 		</div>
 
 		@yield("header")
 
-	</div>
-
-	@yield("content")
+		@yield("content")
 
 	<div id="copyright" class="container">
 		<p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>

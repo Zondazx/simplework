@@ -25,3 +25,12 @@ Route::post("articles", "ArticlesController@store");
 Route::get("articles/{article}", array("as" => "articles.show", "uses" => "ArticlesController@show"));
 Route::get("articles/{article}/edit", array("as" => "articles.edit", "uses" => "ArticlesController@edit"));
 Route::put("articles/{article}", "ArticlesController@update");
+Route::post("welcome", "UsersController@login");
+
+Route::get("login", function() {
+	return View::make("login");
+});
+
+Route::get("register", function() {
+	return View::make("register");
+});

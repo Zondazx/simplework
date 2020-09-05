@@ -36,6 +36,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array 
 	 */
 	protected $casts = array("email_verified_at" => "datetime");
+	   
+    public static $rules = array(
+        "name" => "required|alpha|min:2",
+        "email" => "required|email|unique:users",
+        "password" => "required|alpha_num|between:6,12|confirmed",
+        "password-confirmation" => "required|alpha_num|between:6,12"
+    );
 
 	public function articles() {
 		return $this->hasMany(Article::class);
