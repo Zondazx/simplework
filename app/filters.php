@@ -43,9 +43,7 @@ Route::filter('auth', function()
 		}
 		else
 		{
-			// dd(Auth::user());
-			return "You are a fucking guest";
-			// return Redirect::guest('users/login');
+		 	return Redirect::guest('users/login');
 		}
 	}
 });
