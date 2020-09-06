@@ -43,7 +43,9 @@ Route::filter('auth', function()
 		}
 		else
 		{
-			return Redirect::guest('login');
+			// dd(Auth::user());
+			return "You are a fucking guest";
+			// return Redirect::guest('users/login');
 		}
 	}
 });
@@ -85,6 +87,7 @@ Route::filter('csrf', function()
 {
 	if (Session::token() != Input::get('_token'))
 	{
-		throw new Illuminate\Session\TokenMismatchException;
+		// throw new Illuminate\Session\TokenMismatchException;
+		return Redirect::back()->withInput(Input::except("_token"));
 	}
 });

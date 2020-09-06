@@ -26,11 +26,21 @@
 					<li class="{{ Request::is("about") ? "current_page_item" : "" }}"><a href="/about" accesskey="3" title="">About Us</a></li>
 					<li class="{{ Request::is("articles") ? "current_page_item" : "" }}"><a href="/articles" accesskey="4" title="">Articles</a></li>
 					<li class="{{ Request::is("contacts") ? "current_page_item" : "" }}"><a href="#" accesskey="5" title="">Contact Us</a></li>
-					<li style="margin-left: 120px;" class="{{ Request::is("users/login") ? "current_page_item" : "" }}">{{ HTML::link("users/login", "Login") }}</li>
-					<li class="{{ Request::is("users/register") ? "current_page_item" : "" }}">{{ HTML::link("users/register", "Register") }}</li>
+					
+					@if (!Auth::check())
+						<li style="margin-left: 120px;" class="{{ Request::is("users/login") ? "current_page_item" : "" }}">{{ HTML::link("users/login", "Login") }}</li>
+						<li class="{{ Request::is("users/register") ? "current_page_item" : "" }}">{{ HTML::link("users/register", "Register") }}</li>	
+					@else 
+						<li>{{ HTML::link("users/logout", "Logout") }}</li>
+					@endif
+					
 				</ul>
 			</div>
 		</div>
+
+		@if (Session::has("message"))
+			<h3 class="help">{{ Session::get("message") }}</h3>
+		@endif
 
 		@yield("header")
 
