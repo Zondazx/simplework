@@ -26,8 +26,8 @@
 					<li class="{{ Request::is("about") ? "current_page_item" : "" }}"><a href="/about" accesskey="3" title="">About Us</a></li>
 					<li class="{{ Request::is("articles") ? "current_page_item" : "" }}"><a href="/articles" accesskey="4" title="">Articles</a></li>
 					<li class="{{ Request::is("contacts") ? "current_page_item" : "" }}"><a href="#" accesskey="5" title="">Contact Us</a></li>
-					<li style="margin-left: 120px;" class="{{ Request::is("login") ? "current_page_item" : "" }}"><a href="/login" accesskey="6" title="">Login</a></li>
-					<li class="{{ Request::is("register") ? "current_page_item" : "" }}"><a href="/register" accesskey="6" title="">Register</a></li>
+					<li style="margin-left: 120px;" class="{{ Request::is("users/login") ? "current_page_item" : "" }}">{{ HTML::link("users/login", "Login") }}</li>
+					<li class="{{ Request::is("users/register") ? "current_page_item" : "" }}">{{ HTML::link("users/register", "Register") }}</li>
 				</ul>
 			</div>
 		</div>
